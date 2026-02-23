@@ -20,10 +20,15 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:5173', // Vite dev server
+    origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : 'http://localhost:5173',
     credentials: true
 }));
 app.use(express.json());
+
+// Main entry point message
+app.get('/', (req: Request, res: Response) => {
+    res.send('Savoria API is running. Please access the frontend at the client URL.');
+});
 
 // Health check endpoint
 app.get('/api/health', (req: Request, res: Response) => {
