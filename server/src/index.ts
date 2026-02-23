@@ -30,6 +30,11 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Savoria API is running. Please access the frontend at the client URL.');
 });
 
+// API root message
+app.get('/api', (req: Request, res: Response) => {
+    res.send('Savoria API root. Please use the frontend URL to view the restaurant.');
+});
+
 // Health check endpoint
 app.get('/api/health', (req: Request, res: Response) => {
     res.json({ status: 'OK', message: 'Savoria API is running' });
