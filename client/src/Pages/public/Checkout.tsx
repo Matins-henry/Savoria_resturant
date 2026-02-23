@@ -26,7 +26,8 @@ export default function Checkout() {
 
     const subtotal = cartTotal;
     const tax = subtotal * 0.08;
-    const shippingCost = 5.00; // Flat rate for now
+    const shippingThreshold = 50000;
+    const shippingCost = subtotal >= shippingThreshold ? 0 : 2000;
     const total = subtotal + tax + shippingCost;
 
     const handleShippingSubmit = (e: React.FormEvent) => {
@@ -40,20 +41,24 @@ export default function Checkout() {
             const orderData = {
                 items: cartItems.map(item => ({
                     menuItem: item.id,
-                    quantity: item.quantity,
+                    name: item.name,
                     price: item.price,
-                    name: item.name // Optional, backend might populate
+                    quantity: item.quantity,
+                    image: item.image
                 })),
-                shippingAddress: {
-                    fullName: shippingData.fullName,
+                deliveryAddress: {
                     street: shippingData.streetBy,
                     city: shippingData.city,
-                    zipCode: shippingData.zipCode,
+                    state: "Nigeria", // Default or could be added to form
+                    zip: shippingData.zipCode
+                },
+                contactInfo: {
+                    name: shippingData.fullName,
+                    email: shippingData.email,
                     phone: shippingData.phone
                 },
-                paymentMethod: "Credit Card", // Mock
-                totalAmount: total,
-                status: "Pending"
+                paymentMethod: "card",
+                notes: "" // Optional notes field if added to form
             };
 
             await orderService.create(orderData);
