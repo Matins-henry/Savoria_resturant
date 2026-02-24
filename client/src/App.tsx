@@ -9,7 +9,6 @@ import Menu from "./Pages/public/Menu";
 import MealDetails from "./Pages/public/MealDetails";
 
 import Cart from "./Pages/public/Cart";
-import Checkout from "./Pages/public/Checkout";
 import Login from "./Pages/public/Login";
 import Signup from "./Pages/public/Signup";
 import ForgotPassword from "./Pages/public/ForgotPassword";
@@ -63,7 +62,6 @@ function AppContent() {
                         <Route path="/menu" element={<Menu />} />
                         <Route path="/meal/:id" element={<MealDetails />} />
                         <Route path="/cart" element={<Cart />} />
-                        <Route path="/checkout" element={<Checkout />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/forgot-password" element={<ForgotPassword />} />
