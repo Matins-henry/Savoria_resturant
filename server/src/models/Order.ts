@@ -13,7 +13,7 @@ export interface IOrder extends Document {
     items: IOrderItem[];
     status: 'pending' | 'confirmed' | 'preparing' | 'ready' | 'delivered' | 'cancelled';
     subtotal: number;
-    tax: number;
+    tax?: number;
     deliveryFee: number;
     total: number;
     paymentMethod: 'card' | 'cash';
@@ -62,7 +62,7 @@ const orderSchema = new Schema<IOrder>({
     },
     tax: {
         type: Number,
-        required: true
+        default: 0
     },
     deliveryFee: {
         type: Number,

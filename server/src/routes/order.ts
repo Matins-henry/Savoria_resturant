@@ -56,15 +56,13 @@ router.post('/', protect, async (req: Request, res: Response) => {
         // Calculate totals
         const subtotal = items.reduce((sum: number, item: any) =>
             sum + (item.price * item.quantity), 0);
-        const tax = subtotal * 0.08; // 8% tax
         const deliveryFee = subtotal >= 50000 ? 0 : 2000; // Free delivery over ₦50,000
-        const total = subtotal + tax + deliveryFee;
+        const total = subtotal + deliveryFee;
 
         const order = await Order.create({
             user: req.user?._id,
             items,
             subtotal,
-            tax,
             deliveryFee,
             total,
             paymentMethod,

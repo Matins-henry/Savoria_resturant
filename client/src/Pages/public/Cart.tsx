@@ -44,10 +44,9 @@ export default function Cart() {
     }, [user]);
 
     const subtotal = cartTotal;
-    const tax = subtotal * 0.08; // 8% tax
     const shippingThreshold = 50000;
     const shippingCost = subtotal >= shippingThreshold ? 0 : 2000;
-    const total = subtotal + tax + shippingCost;
+    const total = subtotal + shippingCost;
 
     const handlePlaceOrder = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -283,10 +282,6 @@ export default function Cart() {
                                     <span className="text-white font-medium">
                                         {shippingCost === 0 ? "FREE" : `₦${shippingCost.toLocaleString()}`}
                                     </span>
-                                </div>
-                                <div className="flex justify-between text-gray-400">
-                                    <span>Tax (8%)</span>
-                                    <span className="text-white font-medium">₦{tax.toLocaleString()}</span>
                                 </div>
                                 <div className="h-px bg-white/10 my-4" />
                                 <div className="flex justify-between text-lg font-bold">
