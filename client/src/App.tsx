@@ -91,6 +91,9 @@ function AppContent() {
                         <Route path="settings" element={<AdminSettings />} />
                         <Route path="*" element={<div className="p-8 text-white">Page Under Construction</div>} />
                     </Route>
+
+                    {/* Global Catch-all */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </AnimatePresence>
         </div>
