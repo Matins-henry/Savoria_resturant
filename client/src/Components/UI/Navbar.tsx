@@ -29,6 +29,8 @@ export default function Navbar() {
 
     // Refs
     const searchInputRef = useRef<HTMLInputElement>(null);
+    const logoClickTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+    const [logoClicks, setLogoClicks] = useState(0);
 
     // Scroll Effects
     const { scrollY } = useScroll();
@@ -91,7 +93,23 @@ export default function Navbar() {
                 <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-20 lg:h-24">
                         {/* Logo */}
-                        <Link to="/" className="flex items-center gap-3 group relative z-10">
+                        <div
+                            className="flex items-center gap-3 group relative z-10 cursor-pointer"
+                            onClick={(e) => {
+                                // Logic for 3-click hidden admin access
+                                const newClicks = logoClicks + 1;
+                                setLogoClicks(newClicks);
+
+                                if (logoClickTimeoutRef.current) clearTimeout(logoClickTimeoutRef.current);
+
+                                if (newClicks >= 3) {
+                                    setLogoClicks(0);
+                                    navigate("/admin/login");
+                                } else {
+                                    logoClickTimeoutRef.current = setTimeout(() => setLogoClicks(0), 1000);
+                                }
+                            }}
+                        >
                             <motion.div
                                 whileHover={{ scale: 1.05, rotate: 5 }}
                                 whileTap={{ scale: 0.95 }}
@@ -113,7 +131,7 @@ export default function Navbar() {
                                     Fine Dining
                                 </p>
                             </div>
-                        </Link>
+                        </div>
 
                         {/* Desktop Navigation */}
                         <div className="hidden lg:flex items-center gap-1">
