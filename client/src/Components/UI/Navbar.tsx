@@ -29,7 +29,7 @@ export default function Navbar() {
 
     // Refs
     const searchInputRef = useRef<HTMLInputElement>(null);
-    const logoClickTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+    const logoClickTimeoutRef = useRef<any>(undefined);
     const [logoClicks, setLogoClicks] = useState(0);
 
     // Scroll Effects
@@ -95,7 +95,7 @@ export default function Navbar() {
                         {/* Logo */}
                         <div
                             className="flex items-center gap-3 group relative z-10 cursor-pointer"
-                            onClick={(e) => {
+                            onClick={() => {
                                 // Logic for 3-click hidden admin access
                                 const newClicks = logoClicks + 1;
                                 setLogoClicks(newClicks);
