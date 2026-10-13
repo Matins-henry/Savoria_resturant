@@ -47,7 +47,8 @@ router.post('/', upload.single('image'), (req: Request, res: Response) => {
         }
 
         // Return the full URL
-        const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+        const baseUrl = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
+        const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
         res.json({ url: imageUrl });
     } catch (error: any) {
         res.status(500).json({ error: error.message });
