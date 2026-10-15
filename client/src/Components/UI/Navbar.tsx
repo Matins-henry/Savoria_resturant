@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useCart } from "../../context/CartContext";
+import { CulinaryIcon } from "./Logo";
 
 const navLinks = [
     { name: "Home", path: "/" },
@@ -111,24 +112,22 @@ export default function Navbar() {
                             }}
                         >
                             <motion.div
-                                whileHover={{ scale: 1.05, rotate: 5 }}
+                                whileHover={{ scale: 1.05, rotate: 3 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="relative"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-                                <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 flex items-center justify-center shadow-2xl shadow-orange-500/30">
-                                    <span className="text-white font-bold text-2xl font-serif">S</span>
-                                </div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-2xl blur-lg opacity-40 group-hover:opacity-75 transition-opacity" />
+                                <CulinaryIcon sizeClassName="w-12 h-12" />
                             </motion.div>
                             <div className="hidden sm:block">
                                 <motion.span
-                                    className="text-2xl font-bold bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent tracking-tight"
+                                    className="text-2xl font-bold bg-gradient-to-r from-white via-white to-gray-200 bg-clip-text text-transparent tracking-tight font-serif block leading-none"
                                     whileHover={{ scale: 1.02 }}
                                 >
                                     Savoria
                                 </motion.span>
-                                <p className="text-[10px] uppercase tracking-[0.3em] text-amber-500/70 font-medium">
-                                    Fine Dining
+                                <p className="text-[10px] uppercase tracking-[0.25em] text-amber-500/80 font-medium mt-1">
+                                    Fine Dining & Kitchen
                                 </p>
                             </div>
                         </div>

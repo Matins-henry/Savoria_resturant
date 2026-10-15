@@ -6,11 +6,11 @@ import {
     Calendar,
     Users,
     Settings,
-    LogOut,
-    ChefHat
+    LogOut
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { useAuth } from "../../context/AuthContext";
+import { CulinaryIcon } from "../UI/Logo";
 
 const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/admin" },
@@ -35,9 +35,7 @@ export default function AdminSidebar() {
         <aside className="w-64 glass border-r border-white/5 h-screen sticky top-0 flex flex-col shadow-2xl">
             {/* Header */}
             <div className="p-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white">
-                    <ChefHat className="h-6 w-6" />
-                </div>
+                <CulinaryIcon sizeClassName="w-10 h-10" />
                 <div>
                     <h1 className="text-white font-serif font-semibold text-xl leading-none tracking-tight">Savoria</h1>
                     <span className="text-gray-500 text-xs font-medium">Admin Panel</span>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Sparkles } from "lucide-react";
+import { CulinaryIcon } from "../UI/Logo";
 
 interface AuthLayoutProps {
     children: React.ReactNode;
@@ -41,9 +42,7 @@ export default function AuthLayout({
                             Back to Home
                         </Link>
                         <Link to="/" className="flex items-center gap-2 lg:hidden">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-                                <span className="text-white font-bold font-serif">S</span>
-                            </div>
+                            <CulinaryIcon sizeClassName="w-9 h-9" />
                         </Link>
                     </div>
 

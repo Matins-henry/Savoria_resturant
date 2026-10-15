@@ -19,9 +19,13 @@ const app: Application = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:5173')
-    .split(',')
-    .map(origin => origin.trim().replace(/\/$/, ''));
+const allowedOrigins = Array.from(new Set([
+    'https://savoria-resturant-1.onrender.com',
+    'http://localhost:5173',
+    'http://localhost:5000',
+    ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : []),
+    ...(process.env.CLIENT_URL ? [process.env.CLIENT_URL] : [])
+])).map(origin => origin.trim().replace(/\/$/, ''));
 
 app.use(cors({
     origin: (origin, callback) => {

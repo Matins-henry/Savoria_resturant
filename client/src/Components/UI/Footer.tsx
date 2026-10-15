@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { CulinaryIcon } from "./Logo";
 import {
     MapPin,
     Phone,
@@ -98,18 +99,16 @@ export default function Footer() {
                     <div className="lg:col-span-1">
                         <Link to="/" className="flex items-center gap-3 mb-6 group">
                             <motion.div
-                                whileHover={{ scale: 1.05, rotate: 5 }}
+                                whileHover={{ scale: 1.05, rotate: 3 }}
                                 className="relative"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-                                <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 flex items-center justify-center shadow-xl shadow-orange-500/30">
-                                    <span className="text-white font-bold text-2xl font-serif">S</span>
-                                </div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-2xl blur-lg opacity-40 group-hover:opacity-75 transition-opacity" />
+                                <CulinaryIcon sizeClassName="w-12 h-12" />
                             </motion.div>
                             <div>
-                                <span className="text-2xl font-bold text-white">Savoria</span>
-                                <p className="text-[10px] uppercase tracking-[0.25em] text-amber-500/70 font-medium">
-                                    Fine Dining
+                                <span className="text-2xl font-bold text-white font-serif tracking-tight block leading-none">Savoria</span>
+                                <p className="text-[10px] uppercase tracking-[0.25em] text-amber-500/80 font-medium mt-1">
+                                    Fine Dining & Kitchen
                                 </p>
                             </div>
                         </Link>
